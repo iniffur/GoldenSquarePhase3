@@ -12,8 +12,10 @@ RSpec.describe MusicLibrary do
 
     it "Searches for a keyword" do
         music_library = MusicLibrary.new
-        fake_track_1 = double :track, matches?: true
-        fake_track_2 = double :track, matches?: false
+        fake_track_1 = double :track
+        expect(fake_track_1).to receive(:matches?).with("asdff").and_return(true)
+        fake_track_2 = double :track
+        expect(fake_track_2).to receive(:matches?).with("asdff").and_return(false)
         music_library.add(fake_track_1)
         music_library.add(fake_track_2)
         expect(music_library.search("asdff")).to eq [fake_track_1]
