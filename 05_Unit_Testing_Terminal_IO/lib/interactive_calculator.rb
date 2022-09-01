@@ -16,13 +16,11 @@ class InteractiveCalculator
 
     def gets_num
         input = @io.gets
-        if input.is_a? Integer
-            return input.to_i
-        else
-            fail "Please enter a valid number"
-        end
+        return input.to_i if input.is_a? Integer
+        fail "Please enter a valid number"
     end
 end
 
-##why to_f doesnt work??
-
+# ##why to_f doesnt work??
+# interactive_calculator = InteractiveCalculator.new(Kernel)
+# interactive_calculator.run
